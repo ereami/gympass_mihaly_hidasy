@@ -5,3 +5,7 @@ O arquivo de entrada está ordenado, em ordem crescente, pelo campo Hora.
 2. Uso
 
 ruby mihaly_hidazy.rb <path completo para o arquivo de dados>
+
+3. Execução de testes
+
+TESTOPTS="--verbose" rake
