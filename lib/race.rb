@@ -31,4 +31,11 @@ class Race
   def finished?
     @race_finished
   end
+
+  def with_ordered_grid
+    ordered_grid = @pilots.sort_by { |code, pilot_data| [ -pilot_data.lap_num, pilot_data.total_time ] }
+    ordered_grid.each_with_index do |grid_data, position|
+      yield position+1, grid_data.last
+    end     
+  end
 end
