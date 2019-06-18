@@ -8,4 +8,17 @@ describe LapData do
       assert_equal 90100, LapData.convert_lap_timing_string(lap_timing)
     end
   end
+
+  describe "when Avg Speed is a string of format 46,590" do
+    it "46,590 should be converted to the float 46.59" do
+      avg_speed = "46,590"
+      assert_equal 46.59, LapData.convert_avg_speed_string(avg_speed)
+    end
+
+    it "46 should be converted to the float 46" do
+      avg_speed = "46"
+      assert_equal 46, LapData.convert_avg_speed_string(avg_speed)
+    end
+    
+  end
 end
