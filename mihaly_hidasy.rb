@@ -28,10 +28,11 @@ File.open(ARGV.first, "r") do |f|
   end
 
   puts "\u{1f3c1}  Terminada a corrida!"
-  puts "%3s %10s %-20s %9s %10s" % ["Pos", "Cod.Piloto", "Nom.Piloto", "No.Voltas", "Tempo Total"]
+  puts "%3s %10s %-20s %9s %10s %15s %s" % ["Pos", "Cod.Piloto", "Nom.Piloto", "No.Voltas", "Tempo Total", "Melhor Tempo", "Melhor Volta"]
 
   race.with_ordered_grid do |position, pilot|
-    puts "%3d %10s %-20s %9d %10s" % [position, pilot.code, pilot.name, pilot.lap_num, LapData.convert_lap_timing_to_string(pilot.total_time)]
+    best_lap = pilot.best_lap
+    puts "%3d %10s %-20s %9d %10s %15s (#%d)" % [position, pilot.code, pilot.name, pilot.lap_num, LapData.convert_lap_timing_to_string(pilot.total_time), LapData.convert_lap_timing_to_string(best_lap.time_in_ms), best_lap.number]
   end
 
 end

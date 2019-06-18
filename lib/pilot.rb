@@ -22,4 +22,8 @@ class Pilot
     @laps.inject(0) { |total_time, lap_data| total_time + lap_data.time_in_ms } 
   end
 
+  def best_lap
+    @laps.min { |lap1, lap2| lap1.time_in_ms <=> lap2.time_in_ms }
+  end 
+
 end
