@@ -38,4 +38,13 @@ class Race
       yield position+1, grid_data.last
     end     
   end
+
+  def best_lap
+    best_laps = @pilots.keys.collect do |code|
+       pilot = @pilots[code]
+       { :pilot => pilot, :lap => pilot.best_lap }
+    end
+
+    best_laps.min { |lap_data_1, lap_data_2| lap_data_1[:lap].time_in_ms <=> lap_data_2[:lap].time_in_ms }
+  end
 end
