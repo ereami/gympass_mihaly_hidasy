@@ -1,4 +1,5 @@
 class LapData
+  attr_accessor :number, :time_in_ms, :average_speed
 
   def self.convert_lap_timing_string(lap_timing)
     lap_timing_parts = lap_timing.scan( /(\d+):(\d+).(\d+)/ )
