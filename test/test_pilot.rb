@@ -32,4 +32,20 @@ describe Pilot do
       assert_equal 2042, @pilot.total_time
     end
   end
+
+  describe "when pilot pass final lap" do
+    lap_1 = LapData.new(2, 1000, 40)
+    lap_2 = LapData.new(3, 1042, 41)
+
+    it "should be flagged as race_finished" do
+      @pilot.add_lap lap_1, true
+      assert_equal true, @pilot.race_finished
+    end
+
+    it "should not add more laps after race_finished is true" do
+      @pilot.add_lap lap_1, true
+      @pilot.add_lap lap_2
+      assert_equal lap_1.number, @pilot.lap_num
+    end
+  end
 end
