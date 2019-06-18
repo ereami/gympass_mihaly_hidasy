@@ -1,16 +1,17 @@
 require_relative './lap_data.rb' 
 
 class Pilot
-  attr_accessor :code, :name, :laps
+  attr_accessor :code, :name, :lap_num, :laps
 
   def initialize (code, name, laps=[])
-    self.code = code
-    self.name = name
-    self.laps = laps
+    @code = code
+    @name = name
+    @laps = laps
   end
 
-  def add_lap (lap_data)
-    @laps << lap_data
+  def add_lap (lap)
+    @lap_num = lap.number
+    @laps << lap
   end
 
   def total_time

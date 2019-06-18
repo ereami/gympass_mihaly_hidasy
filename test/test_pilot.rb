@@ -15,7 +15,7 @@ describe Pilot do
 
   describe "when first lap is computed" do
     it "then first lap of pilot should correspond to computed lap" do
-      lap = LapData.new; lap.time_in_ms = 1042
+      lap = LapData.new() ; lap.time_in_ms = 1042
       @pilot.add_lap lap
       assert_equal lap.time_in_ms, @pilot.laps.first.time_in_ms
     end
@@ -23,8 +23,8 @@ describe Pilot do
 
   describe "when two laps of 1000 and 1042  ms are added" do
     it "should have a total time os 2042 ms" do
-      lap_1 = LapData.new; lap_1.time_in_ms = 1000
-      lap_2 = LapData.new; lap_2.time_in_ms = 1042
+      lap_1 = LapData.new() ; lap_1.time_in_ms = 1000
+      lap_2 = LapData.new() ; lap_2.time_in_ms = 1042
 
       @pilot.add_lap lap_1
       @pilot.add_lap lap_2
