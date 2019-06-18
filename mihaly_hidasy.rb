@@ -11,7 +11,6 @@ File.open(ARGV.first, "r") do |f|
   
   pilot = {}
   f.each_line.with_index do |line, line_num|
-    break if race.finished?
     next if line_num == 0 || line.chomp.length == 0
 
     fields = line.scan /(\S+)\s*/
@@ -27,7 +26,7 @@ File.open(ARGV.first, "r") do |f|
   end
 
   puts "\u{1f3c1}  Terminada a corrida!"
-  final_grid = pilot.sort_by { |code, pilot_data| -pilot_data[:total_time] }
+  final_grid = pilot.sort_by { |code, pilot_data| [ -pilot_data[:lap_num].to_i, pilot_data[:total_time] ] }
   
   puts "Pos\tCod.Piloto\tNom.Piloto\t\tNo.Voltas\tTempo Total"
   final_grid.each_with_index do |position_data, position|
