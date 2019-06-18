@@ -36,7 +36,7 @@ File.open(ARGV.first, "r") do |f|
   final_grid.each_with_index do |position_data, position|
     pilot_code = position_data.first
     pilot_data = position_data.last
-    puts "#{position + 1} \t #{pilot_code}\t#{pilot_data.name}\t\t#{pilot_data.lap_num}\t#{pilot_data.total_time}"
+    puts "#{position + 1} \t #{pilot_code}\t#{pilot_data.name}\t\t#{pilot_data.lap_num}\t#{LapData.convert_lap_timing_to_string(pilot_data.total_time)}"
   end
 end
 
