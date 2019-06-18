@@ -16,7 +16,7 @@ File.open(ARGV.first, "r") do |f|
   
   pilot = {}
   f.each_line.with_index do |line, line_num|
-    next if line_num == 0 || line.chomp.length == 0
+    next if line_num == 0 || line.chomp.length == 0 || line =~ /Hora/
 
     fields = line.scan /(\S+)\s*/
     timestamp, pilot_code, dash, pilot_name, lap_num, lap_timing, avg_speed = fields.flatten 
