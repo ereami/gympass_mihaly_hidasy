@@ -6,6 +6,13 @@ if ARGV.length < 1
   exit
 end
 
+unless File.exists?(ARGV.first)
+  STDERR.puts "Arquivo de entrada não existe." 
+  exit 1 
+end
+
+
+
 File.open(ARGV.first, "r") do |f|
   race = Race.new
   
